@@ -53,7 +53,7 @@ let model;
 
             //context.drawImage(document.getElementById('gardel'), 33, 71, 104, 124, 21, 20, 87, 104);
             //context.drawImage(document.getElementById('gardel'), start[0], start[1],size[0], size[1], 21, 20, 87, 104);
-            context.drawImage(face, start[0], start[1]-70, 200, 220)
+            context.drawImage(face, start[0], start[1]-70, size[0], size[1]*1.6)
 
             }
            }
