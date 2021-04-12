@@ -43,3 +43,10 @@ body{
     -webkit-transform:rotateY(180deg); /* Safari and Chrome */
     -moz-transform:rotateY(180deg); /* Firefox */
 }
+
+.face-url-input { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 15px
+ }

@@ -1,4 +1,9 @@
 let model;
+function refreshface() {
+  var face = document.getElementById('face');
+  var faceSrc = document.getElementById('faceUrl').value || "https://accesototalnews.files.wordpress.com/2020/06/gardel7.jpg";
+  face.src = faceSrc;
+}
 (function() {
     var canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d'),
@@ -35,28 +40,31 @@ let model;
           {
            console.log(predictions);
            for (let i = 0; i < predictions.length; i++) {
-           const start = predictions[i].topLeft;
-           const end = predictions[i].bottomRight;
-           var probability = predictions[i].probability;
-           const size = [end[0] - start[0], end[1] - start[1]];
-           // Render a rectangle over each detected face.
-           /*context.beginPath();
-           context.strokeStyle="green";
-           context.lineWidth = "4";
-           context.rect(start[0], start[1],size[0], size[1]);
-           context.stroke();*/
-           var prob = (probability[0]*100).toPrecision(5).toString();
-           var text = prob+"%";
-           context.fillStyle = "red";
-           context.font = "13pt sans-serif";
-           context.fillText(text,start[0]+5,start[1]+20);
+             const start = predictions[i].topLeft;
+             const end = predictions[i].bottomRight;
+             var probability = predictions[i].probability;
+             const size = [end[0] - start[0], end[1] - start[1]];
+             // Render a rectangle over each detected face.
+             /*context.beginPath();
+             context.strokeStyle="green";
+             context.lineWidth = "4";
+             context.rect(start[0], start[1],size[0], size[1]);
+             context.stroke();*/
+             var prob = (probability[0]*100).toPrecision(5).toString();
+             var text = prob+"%";
+             context.fillStyle = "red";
+             context.font = "13pt sans-serif";
+             context.fillText(text,start[0]+5,start[1]+20);
 
             //context.drawImage(document.getElementById('gardel'), 33, 71, 104, 124, 21, 20, 87, 104);
             //context.drawImage(document.getElementById('gardel'), start[0], start[1],size[0], size[1], 21, 20, 87, 104);
-            context.drawImage(face, start[0], start[1]-70, size[0], size[1]*1.6)
-
+            try {
+              context.drawImage(face, start[0], start[1]-70, size[0], size[1]*1.6)
+            } catch(e) {
+              console.log("Error downloading face", face.src)
             }
-           }
+          }
+         }
         setTimeout(draw,250,video,context,width,height);
     }
 })();
