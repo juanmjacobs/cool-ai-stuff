@@ -16,6 +16,7 @@ body{
  background-color: #FAFAFA;
  width: 100%;
  height: 100%;
+ zoom: 67%;
 }
 .blur {
   background: rgba(255, 255, 255, 0.2); 
