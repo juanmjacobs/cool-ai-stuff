@@ -33,6 +33,7 @@ function refreshface() {
     },false);
     let relativeOrigin;
     let firstFace;
+    let lastFaceOrigPosition;
     async function draw(video,context, width, height)
     {
         //context.drawImage(video,0,0,width,height);
@@ -70,17 +71,14 @@ function refreshface() {
             //context.drawImage(document.getElementById('gardel'), start[0], start[1],size[0], size[1], 21, 20, 87, 104);
              context.strokeStyle="green";
              context.lineWidth = "4";
-             context.rect(10, 0, 20, 20);
-             context.rect(40, 40, 20, 20);
              context.stroke();
             try {
               const [ x, y ] = start;
               const [ xOrig, yOrig ] = relativeOrigin;
-              const movingFactor = firstFace ? 1 : 1.5; //moverse 1.5 veces mas que la cara? offset de cara anterior?
+              const movingFactor = firstFace ? 1 : 1.5//1.5; //moverse 1.5 veces mas que la cara? offset de cara anterior?
               const faceSize = 50;
               let faceX = movingFactor * (width - x);
               let faceY = movingFactor * y;
-
               let faceXOrig = faceX - xOrig;
               if(faceXOrig < 0) faceXOrig = 0;
               if(faceXOrig > width - faceSize) faceXOrig = width - faceSize;
@@ -90,6 +88,7 @@ function refreshface() {
               if(faceYOrig > height - faceSize) faceXOrig = height - faceSize;
               
               context.drawImage(face, faceXOrig , faceYOrig, faceSize, faceSize)
+              lastFaceOrigPosition = [ faceXOrig, faceYOrig ];
 
             } catch(e) {
               console.log("Error downloading face", face.src)

@@ -31,19 +31,18 @@ body{
     text-align: center;
 }
 #videoContainer {
-    width:640px;
+    /*width:640px;
     /*background-image: url(load1.gif);*/
     background-color: #FAFAFA;
     text-align: left;
-    border:480px;
+  /*  border:480px;
     margin:0 auto;
-}
+*/}
 
 #webcam {
     transform: rotateY(180deg);
     -webkit-transform:rotateY(180deg); /* Safari and Chrome */
     -moz-transform:rotateY(180deg); /* Firefox */
-
 }
 
 .face-url-input { 
