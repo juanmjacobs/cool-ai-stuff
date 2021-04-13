@@ -31,6 +31,7 @@ function refreshface() {
                           {
         draw(this, context,640,480);
     },false);
+    let relativeOrigin;
     async function draw(video,context, width, height)
     {
         //context.drawImage(video,0,0,width,height);
@@ -45,6 +46,7 @@ function refreshface() {
            //console.log(predictions);
            for (let i = 0; i < predictions.length; i++) {
              const start = predictions[i].topLeft;
+             if(!relativeOrigin) relativeOrigin = [640-start[0], start[1]];
              const end = predictions[i].bottomRight;
              var probability = predictions[i].probability;
              const size = [end[0] - start[0], end[1] - start[1]];
@@ -62,9 +64,22 @@ function refreshface() {
 
             //context.drawImage(document.getElementById('gardel'), 33, 71, 104, 124, 21, 20, 87, 104);
             //context.drawImage(document.getElementById('gardel'), start[0], start[1],size[0], size[1], 21, 20, 87, 104);
+             context.strokeStyle="green";
+             context.lineWidth = "4";
+             context.rect(10, 0, 20, 20);
+             context.rect(40, 40, 20, 20);
+             context.stroke();
             try {
-              console.log(start,"====", [640-start[0],start[1]])
-              context.drawImage(face, 640-start[0], start[1]-70, 50, 50)
+              const [ x, y ] = start;
+              const [ xOrig, yOrig ] = relativeOrigin;
+              let faceX = width - x;
+              let faceY = y;
+
+              let faceXOrig = faceX - xOrig;
+              if(faceXOrig < 0) faceXOrig = 0;
+              let faceYOrig = faceY - yOrig;
+              if(faceYOrig < 0) faceYOrig = 0;
+              context.drawImage(face, faceXOrig , faceYOrig, 50, 50)
             } catch(e) {
               console.log("Error downloading face", face.src)
             }
