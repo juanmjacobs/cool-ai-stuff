@@ -34,13 +34,15 @@ function refreshface() {
     async function draw(video,context, width, height)
     {
         //context.drawImage(video,0,0,width,height);
+        context.clearRect(0, 0, width, height);
+
         context.drawImage(maze,0,0,width,height);
         if(!model) model = await blazeface.load();
         const returnTensors = false;
         const predictions = await model.estimateFaces(video, returnTensors);
           if (predictions.length > 0)
           {
-           console.log(predictions);
+           //console.log(predictions);
            for (let i = 0; i < predictions.length; i++) {
              const start = predictions[i].topLeft;
              const end = predictions[i].bottomRight;
@@ -61,7 +63,8 @@ function refreshface() {
             //context.drawImage(document.getElementById('gardel'), 33, 71, 104, 124, 21, 20, 87, 104);
             //context.drawImage(document.getElementById('gardel'), start[0], start[1],size[0], size[1], 21, 20, 87, 104);
             try {
-              context.drawImage(face, start[0], start[1]-70, 50, 50)
+              console.log(start,"====", [640-start[0],start[1]])
+              context.drawImage(face, 640-start[0], start[1]-70, 50, 50)
             } catch(e) {
               console.log("Error downloading face", face.src)
             }
