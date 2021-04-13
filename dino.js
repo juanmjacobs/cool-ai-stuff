@@ -1,6 +1,6 @@
-/*var jump = () => {
+var jump = () => {
   document.dispatchEvent(
-    new KeyboardEvent("keydown", { keyCode: 32 })
+    new KeyboardEvent("keydown", { keyCode: 38 })
   );
 }
 
@@ -16,9 +16,9 @@ var duck = () => {
     
 }
 
-setTimeout(jump,1000)
-setInterval(duck,1000)
-*/
+//setInterval(jump,1000)
+//setInterval(duck,1000)
+
 let model;
 function refreshface() {
   var face = document.getElementById('face');
@@ -60,7 +60,6 @@ function refreshface() {
         //context.drawImage(video,0,0,width,height);
         context.clearRect(0, 0, width, height);
 
-        context.drawImage(maze,0,0,width,height);
         if(!model) model = await blazeface.load();
         const returnTensors = false;
         const predictions = await model.estimateFaces(video, returnTensors);
@@ -95,21 +94,7 @@ function refreshface() {
              context.stroke();
             try {
               const [ x, y ] = start;
-              const [ xOrig, yOrig ] = relativeOrigin;
-              const movingFactor = firstFace ? 1 : 1.5//1.5; //moverse 1.5 veces mas que la cara? offset de cara anterior?
-              const faceSize = 50;
-              let faceX = movingFactor * (width - x);
-              let faceY = movingFactor * y;
-              let faceXOrig = faceX - xOrig;
-              if(faceXOrig < 0) faceXOrig = 0;
-              if(faceXOrig > width - faceSize) faceXOrig = width - faceSize;
-              let faceYOrig = faceY - yOrig;
-              console.log({faceYOrig, height})
-              if(faceYOrig < 0) faceYOrig = 0;
-              if(faceYOrig > height - faceSize) faceXOrig = height - faceSize;
-              
-              context.drawImage(face, faceXOrig , faceYOrig, faceSize, faceSize)
-              lastFaceOrigPosition = [ faceXOrig, faceYOrig ];
+              console.log("y",y)
 
             } catch(e) {
               console.log("Error downloading face", face.src)
