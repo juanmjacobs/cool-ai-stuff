@@ -32,13 +32,9 @@ body{
     text-align: center;
 }
 #videoContainer {
-    /*width:640px;
-    /*background-image: url(load1.gif);*/
     background-color: #FAFAFA;
     text-align: left;
-  /*  border:480px;
-    margin:0 auto;
-*/}
+}
 
 #webcam {
     transform: rotateY(180deg);
