@@ -1,5 +1,5 @@
 # Cool AI stuff
-Just some little gags based on face detection with webcam on browser using tensorflow.js by [sid0312](https://github.com/sid0312/tfjs-face_detection)
+Just some little gags based on face detection with webcam on browser using tensorflow.js
 
 - Do you wanna be [Gardel](https://en.wikipedia.org/wiki/Carlos_Gardel)? I got you, just use this [gardel metamorphosis tool](https://juanmjacobs.github.io/cool-ai-stuff/quierosergardel)!
 
