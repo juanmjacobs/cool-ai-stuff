@@ -1,25 +1,8 @@
-# Face Detection on the browser using Tensorflow.js
-Face detection with webcam on browser using tensorflow.js
+# Cool AI stuff
+Just some little gags based on face detection with webcam on browser using tensorflow.js by [https://github.com/sid0312/tfjs-face_detection](sid0312)
 
-## To run the project,
+- Do you wanna be [Gardel](https://en.wikipedia.org/wiki/Carlos_Gardel)? I got you, just use this [gardel metamorphosis tool](https://juanmjacobs.github.io/cool-ai-stuff/quierosergardel)!
 
-## For linux users
+- Are you tired of having to guide Gardel's face through a maze with your hands like a caveman? Say no more, and try this [hands free Gardel face-maze](https://juanmjacobs.github.io/cool-ai-stuff/gardelfacemaze)
 
-```console
-user@username:~$ git clone https://github.com/sid0312/tfjs-face_detection
-user@username:~$ cd tfjs-face_detection
-user@username:~/tfjs-face_detection$ google-chrome index.html
-```
-## For windows users
-  
-```shell
-C:\Users\username> git clone https://github.com/sid0312/tfjs-face_detection
-C:\Users\username> cd tfjs-face_detection
-C:\Users\username\tfjs-face_detection> index.html
-```
-<strong> Allow access to the browser and wait for a few seconds </strong>
-
-# Results
-<p align='center'>
-  <img src="results/t1.gif">
-  </p>
+- Trying to catch up on your excerise? Remeember the dino offline chrome game? [jump to make the dino jump too](https://juanmjacobs.github.io/cool-ai-stuff/chromedino) 
