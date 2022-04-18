@@ -5,4 +5,4 @@ Just some little gags based on face detection with webcam on browser using tenso
 
 - Are you tired of having to guide Gardel's face through a maze with your hands like a caveman? Say no more, and try this [hands free Gardel face-maze](https://juanmjacobs.github.io/cool-ai-stuff/gardelfacemaze)
 
-- Trying to catch up on your excerise? Remeember the dino offline chrome game? [jump to make the dino jump too](https://juanmjacobs.github.io/cool-ai-stuff/chromedino) 
+- Trying to catch up on your excerise? Remember the dino offline chrome game? [jump to make the dino jump too](https://juanmjacobs.github.io/cool-ai-stuff/chromedino) 
