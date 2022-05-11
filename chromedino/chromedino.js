@@ -1,7 +1,11 @@
 var jump = () => {
-  document.dispatchEvent(
-    new KeyboardEvent("keydown", { keyCode: 38 })
-  );
+  if(Runner && Runner.instance_ && Runner.instance_.crashed) {
+    Runner.instance_.restart()
+  } else {
+    document.dispatchEvent(
+      new KeyboardEvent("keydown", { keyCode: 38 })
+    );
+  }
 }
 
 var duck = () => {
