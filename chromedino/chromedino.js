@@ -25,6 +25,7 @@ function refreshface() {
   var faceSrc = document.getElementById('faceUrl').value || "https://accesototalnews.files.wordpress.com/2020/06/gardel7.jpg";
   face.src = faceSrc;
 }
+
 (function() {
     var canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d'),
@@ -36,6 +37,10 @@ function refreshface() {
       const faceUrl = search.split("=")[1];
       if(faceUrl) face.src = faceUrl;
     }
+
+    document.getElementById('canvas').style.display = search.indexOf("showCanvas")+1 ? "block" : "none" 
+    console.log("canvas.style.display",canvas.style.display)
+
     navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     
     navigator.getMedia({
@@ -71,7 +76,7 @@ function refreshface() {
               const size = [end[0] - start[0], end[1] - start[1]];
               const [ x, y ] = start;
               const hasJumped = previousY - y > 10
-              console.log("y",y, "previousY", previousY, hasJumped? "JUMP!!!!!":"");
+              //console.log("y",y, "previousY", previousY, hasJumped? "JUMP!!!!!":"");
               if(hasJumped) {
                 jump();
                 context.font = "100px Arial";
