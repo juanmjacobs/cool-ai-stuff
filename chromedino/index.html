@@ -1233,8 +1233,8 @@ function onDocumentLoad() {
     controlButtonDiv && controlButtonDiv.insertBefore(secondaryButton, primaryButton);
   }
 
-  if (reloadButton.style.display == 'none' &&
-      staleLoadButton.style.display == 'none') {
+  if (reloadButton && reloadButton.style.display == 'none' &&
+      staleLoadButton && staleLoadButton.style.display == 'none') {
     detailsButton.classList.add('singular');
   }
 
@@ -1262,8 +1262,10 @@ function onDocumentLoad() {
   // Add a main message paragraph.
   if (loadTimeData.valueExists('primaryParagraph')) {
     var p = document.querySelector('#main-message p');
-    p.innerHTML = loadTimeData.getString('primaryParagraph');
-    p.hidden = false;
+    if(p) {
+      p.innerHTML = loadTimeData.getString('primaryParagraph');
+      p.hidden = false;
+    }
   }
 }
 
