@@ -1,6 +1,6 @@
 var jump = () => {
   if(Runner && Runner.instance_ && Runner.instance_.crashed) {
-    Runner.instance_.restart()
+    //Runner.instance_.restart()
   } else {
     document.dispatchEvent(
       new KeyboardEvent("keydown", { keyCode: 38 })
