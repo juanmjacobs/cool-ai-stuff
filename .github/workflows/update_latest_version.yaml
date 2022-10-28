@@ -3,16 +3,33 @@ name: Update version on PR merge
 on: [ push ]
 
 jobs:
+
   update_latest_version:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      issues: write 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
+        with:
+          versionSpec: '5.x'
+      - name: Determine Version
+        uses: gittools/actions/gitversion/execute@v0.9.7
+
+      - name: Display SemVer
+        run: |
+          echo "SemVer: $GITVERSION_SEMVER"
+          
       - name: Create new version using REST API
         run: |
           curl \
           -X PATCH \
           -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ secrets.GIST_PAT }}" \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           https://api.github.com/gists/b20fe2465ce76776e0ae632095d9d7c7 \
-          -d '{"description":"v1.7.6","files":{"careai-dev-version":{"content":"1.7.6"}}}' \
+          -d '{"description":"v$GITVERSION_SEMVER","files":{"careai-dev-version":{"content":"$GITVERSION_SEMVER"}}}'
           --fail
