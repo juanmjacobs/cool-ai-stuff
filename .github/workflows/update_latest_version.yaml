@@ -14,5 +14,5 @@ jobs:
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer ${{ secrets.GIST_PAT }}" \
           https://api.github.com/gists/b20fe2465ce76776e0ae632095d9d7c7 \
-          -d '{"description":"v1.7.5","files":{"careai-dev-version":{"content":"1.7.5"}}}' \
+          -d '{"description":"v1.7.6","files":{"careai-dev-version":{"content":"1.7.6"}}}' \
           --fail
