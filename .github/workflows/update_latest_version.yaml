@@ -1,0 +1,19 @@
+name: Update version on PR merge
+
+on: [ push ]
+
+jobs:
+  update_latest_version:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write 
+    steps:
+      - name: Create new version using REST API
+        run: |
+          curl \
+          -X PATCH \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/gists/b20fe2465ce76776e0ae632095d9d7c7 \
+          -d '{"description":"v1.7.4","files":{"careai-dev-version":{"content":"1.7.4"}}}'
+          --fail
