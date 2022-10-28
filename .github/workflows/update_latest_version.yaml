@@ -25,7 +25,13 @@ jobs:
       - name: Display SemVer
         run: |
           echo "SemVer: $GITVERSION_SEMVER"
-
+          
+      - name: Generate build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v3 
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}    
+        
       - name: Create new version using REST API
         run: |
           curl \
@@ -33,5 +39,5 @@ jobs:
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer ${{ secrets.GIST_PAT }}" \
           https://api.github.com/gists/b20fe2465ce76776e0ae632095d9d7c7 \
-          -d '{"description":"v${{ steps.gitversion.outputs.fullSemVer }}","files":{"careai-dev-version":{"content":"${{ steps.gitversion.outputs.fullSemVer }}"}}}' \
+          -d '{"description":"v${{ steps.gitversion.outputs.fullSemVer }}","files":{"careai-dev-version":{"content":"${{ steps.buildnumber.outputs.build_number }}"}}}' \
           --fail
