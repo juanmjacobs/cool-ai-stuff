@@ -5,8 +5,7 @@ on: [ push ]
 jobs:
   update_latest_version:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write 
+    permissions: write-all
     steps:
       - name: Create new version using REST API
         run: |
