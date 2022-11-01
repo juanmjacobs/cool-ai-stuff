@@ -17,7 +17,7 @@ jobs:
           echo NEW $NEW_VERSION
           SHA="${{ github.SHA }}"
           echo SHA $SHA
-          BODY={\"description\":\"v1.7.$NEW_VERSION '$SHA' \",\"files\":{\"careai-dev-version\":{\"content\":\"$NEW_VERSION\"}}}
+          BODY={\"description\":\"v1.7.$NEW_VERSION\",\"files\":{\"careai-dev-version\":{\"content\":\"$NEW_VERSION\"}}}
           echo $BODY
           curl \
           -X PATCH \
