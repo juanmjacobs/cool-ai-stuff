@@ -14,8 +14,9 @@ jobs:
           CURRENT_VERSION=$(curl --silent https://gist.githubusercontent.com/juanmjacobs/b20fe2465ce76776e0ae632095d9d7c7/raw?cache=${{ github.SHA }})
           echo CURRENT $CURRENT_VERSION
           NEW_VERSION=$((CURRENT_VERSION + 1))
+          SHA=${{ github.SHA }}
           echo NEW $NEW_VERSION
-          BODY={\"description\":\"v1.7.$NEW_VERSION sha: ${{ github.SHA }}\",\"files\":{\"careai-dev-version\":{\"content\":\"$NEW_VERSION\"}}}
+          BODY={\"description\":\"v1.7.$NEW_VERSION commit: $SHA\",\"files\":{\"careai-dev-version\":{\"content\":\"$NEW_VERSION\"}}}
           echo $BODY
           curl \
           -X PATCH \
