@@ -15,7 +15,7 @@ jobs:
           echo CURRENT $CURRENT_VERSION
           NEW_VERSION=$((CURRENT_VERSION + 1))
           echo NEW $NEW_VERSION
-          BODY={\"description\":\"v1.7.$NEW_VERSION\",\"files\":{\"careai-dev-version\":{\"content\":\"$NEW_VERSION\"}}}
+          BODY={\"description\":\"v1.7.$NEW_VERSION sha: ${{ github.SHA }}\",\"files\":{\"careai-dev-version\":{\"content\":\"$NEW_VERSION\"}}}
           echo $BODY
           curl \
           -X PATCH \
